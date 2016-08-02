@@ -31,20 +31,21 @@ def change_color(filename):
                 filename[r][c]=[255,255,255] 
             elif filename[r][c][0]>194: # changes reddish colors to magenta
                 filename[r][c]=[255,0,255] 
-            elif filename[r][c][1]>150: # changes gold color to silver
+            elif filename[r][c][1]>150: # changes goldish color to silver
                 filename[r][c]=[204,204,204] 
     return filename
 
+'''changes image using the Python Image Library (PIL)'''
 def pil_adjust(my_image):
-    thick = my_image.size[0]
-    tall = my_image.size[1]
+    thick = my_image.size[0]         #set the width to the width of the image
+    tall = my_image.size[1]          #set the height to the width of the image
     
-    my_mask = PIL.Image.new('RGBA', (thick, tall), (0,0,0,0))
-    drawing_layer = PIL.ImageDraw.Draw(my_mask)
-    drawing_layer.ellipse((176,92,1180,679), fill=(0,255,0,255))
+    my_mask = PIL.Image.new('RGBA', (thick, tall), (0,0,0,0))        #takes imported image and makes it a PIL image
+    drawing_layer = PIL.ImageDraw.Draw(my_mask)                      #makes a drawing layer of image for the mask
+    drawing_layer.ellipse((176,92,1180,679), fill=(0,255,0,255))     #draws an ellipse on the mask with transparent background
     
-    result = PIL.Image.new('RGBA', (thick, tall))
-    result.paste(my_image, (0,0), mask=my_mask)
+    result = PIL.Image.new('RGBA', (thick, tall))                    #initializes the final image
+    result.paste(my_image, (0,0), mask=my_mask)                      #puts the mask and image together
     return result
 
 
@@ -53,6 +54,7 @@ changed_image = open_file('49ers.jpg')
 to_convert = change_color(changed_image)
 my_image = PIL.Image.fromarray(to_convert)
 final = pil_adjust(my_image)
+final.save("C:/Users/jorda/Desktop/CSP Training/1.4.7 Stuff/finalpicture.gif")
 
 show_image()
 
