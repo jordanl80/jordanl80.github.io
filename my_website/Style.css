@@ -1,0 +1,36 @@
+body {
+  background-color: navy;
+  color: yellow;
+  
+
+
+}
+
+h1 {
+  background-color: red;
+  color: gold;
+  text-align: left;background-image: url(Ellis.PNG);
+  /*
+  background-size: cover;
+  */
+}
+
+p {
+  background-color: yellow;
+  color: green;
+  text-align: center;
+}
+
+h2 {
+  background-color: white;
+  color: red;
+  text-align: right;
+}
+
+a:link {
+  color: red;
+  
+}
+a:visited {
+  color:#D4AF37;
+}
